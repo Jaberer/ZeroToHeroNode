@@ -8,7 +8,8 @@ var io = require('socket.io')(http);
 /** Define a route handler `/` that is called when we hit home */
 app.get('/', function(req, res)
 {
-	res.send('index.html');
+	//res.send('index.html');
+	res.sendFile(__dirname + '/index.html');
 });
 
 /** Define a new event handler for Socket.IO whenever a new user has connected */
