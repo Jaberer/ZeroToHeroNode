@@ -1,0 +1,34 @@
+<!DocType HTML>
+<html>
+	<head>
+		<title>Socket Chat</title>
+		<link rel="stylesheet" type="text/css" src="http://necolas.github.io/normalize.css/3.0.2/normalize.css"/>
+		<link rel="stylesheet" type="text/css" src="main.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+	</head>
+	<script>
+		// Load the Socket.IO Client
+		var socket = io();
+		$('form').submit(function()
+		{
+			// Socket pushing is the easiest thing in the world!
+			// Simply use emit to emit, and then specify a channel name, and then some content 
+			socket.emit('chat message', $('#m').val());
+			
+			// reset the value
+			$('#m').val('');
+			
+			// prevent default action...
+			return false;
+		});
+	</script>
+	<body>
+		<ul id="messages"></ul>
+		<form action="">
+			<input id="m" autocomplete="off"/>
+			<button>Send</button>
+		</form>
+	</body>
+	
+</html>
