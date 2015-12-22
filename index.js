@@ -15,22 +15,25 @@ app.get('/', function(req, res)
 /** Define a new event handler for Socket.IO whenever a new user has connected */
 io.on('connection', function(socket)
 {
-	console.log('A user has connected to the Socket.IO Server');
-  
-	socket.on('disconnect', function()
-	{
-    	console.log('A user has been disconnected from the Socket.IO Server');
-  	});
-});
-
-/** Define a new event handler for when our socket gets a submission called 'chat message' */
-io.on('connection', function(socket)
-{
+	
   	socket.on('chat message', function(msg)
 	{
     	console.log('message: ' + msg);
   	});
+	/*  
+	socket.on('disconnect', function()
+	{
+    	console.log('A user has been disconnected from the Socket.IO Server');
+  	});
+	  */
 });
+
+io.on('connection', function(socket)
+{
+	
+});
+
+
 
 /** Our HTTP Server now listens on port 3000 */
 http.listen(3000, function()
